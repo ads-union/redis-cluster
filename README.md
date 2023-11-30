@@ -28,3 +28,12 @@ wget -O installer.sh https://ads-union.github.io/redis-cluster/installer.sh \
 |cluster 3|cluster 4|
 
 ![architecture](https://github.com/ads-union/redis-cluster/blob/main/architecture.jpg?raw=true)
+
+## Cli
+
+``` shell
+docker run -it --rm --network ads redis:7.2.2-alpine redis-cli -c -h redis-1
+```
+
+* network name must change if your network name is not "ads"
+* redis-1 can change to redis-1 ~ redis-6
