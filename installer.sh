@@ -58,7 +58,7 @@ done
 exportfs -ra
 
 # doanload config file
-wget https://ads-union.github.io/redis.conf --quiet -O redis.conf
+wget https://ads-union.github.io/redis-cluster/redis.conf --quiet -O redis.conf
 
 # write .env file
 cat <<EOT > $env
