@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 conf=/data/nodes.conf
 temp=/data/nodes.temp
@@ -26,10 +26,12 @@ if [ -f $conf ]; then
 			# get ip by docker hostname
 			# if ip not found, wait 1 second and retry
 			# after retry in 2 minutes, stop waiting
-			ip=`nslookup -type=a $host | awk 'NR==6' | awk '{print $2}'`
-	                if [ "$ip" != "" ]; then
-                	        break
-                	fi
+			
+			# ip=`nslookup -type=a $host | awk 'NR==6' | awk '{print $2}'`
+			ip=`ping -c 1 $host | awk 'NR==2' | awk '{print $4}' | awk -F':' '{print $1}'`
+	        if [ "$ip" != "" ]; then
+                    break
+            fi
 			
 			sleep 1s
 			counter=`expr $counter + 1`
