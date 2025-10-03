@@ -99,6 +99,7 @@ for i in $(seq 1 $replica); do
   cluster-$i:
     image: \${Image}
     hostname: '{{index .Service.Labels "service.name"}}'
+    privileged: true
     volumes:
       - redis-volume:/data
     configs:

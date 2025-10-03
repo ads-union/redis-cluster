@@ -54,5 +54,7 @@ if [ -f $conf ]; then
 	mv $temp $conf
 fi
 
+sysctl vm.overcommit_memory=1
+
 # start redis server
 redis-server /usr/local/etc/redis/redis.conf
